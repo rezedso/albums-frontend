@@ -12,6 +12,7 @@ import Loader from './Loader';
 import { useEffect, useState } from 'react';
 import { getCurrentUser } from '../services/auth.service';
 import ConfirmationModal from './ConfirmationModal';
+import { toast } from 'react-toastify';
 
 const UsersDataGrid = () => {
   const [rows, setRows] = useState([]);
@@ -73,6 +74,9 @@ const UsersDataGrid = () => {
                   role: e.target.value,
                   addRole: true,
                 });
+                toast.success(
+                  `Added role ${e.target.value} to user "${params.row.username}"`
+                );
                 refetch();
               }}
               displayEmpty={true}
@@ -112,6 +116,9 @@ const UsersDataGrid = () => {
                   role: e.target.value,
                   addRole: false,
                 });
+                toast.success(
+                  `Removed role ${e.target.value} to user "${params.row.username}"`
+                );
                 refetch();
               }}
               displayEmpty={true}
