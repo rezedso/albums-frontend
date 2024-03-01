@@ -7,7 +7,8 @@ import {
 import { toast } from 'react-toastify';
 
 const instance = axios.create({
-  baseURL: 'http://localhost:8080',
+  // baseURL: 'http://localhost:8080',
+  baseURL: 'musify.up.railway.app',
   headers: {
     'Content-Type': 'application/json',
   },
@@ -37,7 +38,7 @@ instance.interceptors.response.use(
         originalConfig._retry = true;
         try {
           const res = await axios.post(
-            'http://localhost:8080/auth/refresh-token',
+            'musify.up.railway.app/auth/refresh-token',
             {},
             {
               headers: {
