@@ -7,7 +7,7 @@ import {
 import { toast } from 'react-toastify';
 
 const instance = axios.create({
-  baseURL: 'https//:musify.up.railway.app',
+  baseURL: 'https://musify.up.railway.app',
   headers: {
     'Content-Type': 'application/json',
   },
