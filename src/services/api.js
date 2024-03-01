@@ -37,7 +37,7 @@ instance.interceptors.response.use(
         originalConfig._retry = true;
         try {
           const res = await axios.post(
-            'https//:musify.up.railway.app/auth/refresh-token',
+            'https://musify.up.railway.app/auth/refresh-token',
             {},
             {
               headers: {
