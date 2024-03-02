@@ -14,7 +14,7 @@ import Loader from '../Loader';
 import { formatDate } from '../../lib/utils';
 import { getCurrentUser } from '../../services/auth.service';
 import CreateOrUpdateAlbumModal from '../CreateOrUpdateAlbumModal';
-import CreateArtistModal from '../CreateOrUpdateArtistModal';
+import CreateOrUpdateArtistModal from '../CreateOrUpdateArtistModal';
 import UserLists from '../UserLists';
 import ImageOutlinedIcon from '@mui/icons-material/ImageOutlined';
 import ConfirmationModal from '../ConfirmationModal';
@@ -81,7 +81,7 @@ const ArtistPage = () => {
             </Button>
             {user?.roles.some((role) => role.includes('ROLE_ADMIN')) && (
               <>
-                <CreateArtistModal artist={artist} />
+                <CreateOrUpdateArtistModal artist={artist} />
                 <CreateOrUpdateAlbumModal artistName={artist?.name} />
                 <ConfirmationModal
                   title='Delete Artist'

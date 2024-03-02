@@ -2,7 +2,6 @@
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Artist from './Artist';
 import NoResults from './NoResults';
-import Loader from './Loader';
 import useFilter from '../hooks/use-filter';
 import Filter from './Filter';
 
@@ -75,10 +74,9 @@ const InfiniteScrollArtists = ({
         setSortBy={setSortBy}
       />
       <InfiniteScroll
-        dataLength={data?.pages?.length || 6}
+        dataLength={data?.pages?.length || 20}
         next={fetchNextPage}
         hasMore={!!hasNextPage}
-        loader={<Loader />}
         data-testid='infinite-scroll'
         scrollableTarget='scrollbar-target'
       >

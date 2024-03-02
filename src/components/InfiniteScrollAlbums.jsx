@@ -13,7 +13,7 @@ const InfiniteScrollAlbums = ({
   genrePage,
   lists,
 }) => {
-  let albums = data?.pages.map((group) => group.content).flat();
+  let albums = data?.pages?.map((group) => group.content).flat();
 
   const {
     query,

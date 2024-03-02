@@ -209,6 +209,7 @@ export const useDeleteUser = () => {
 };
 
 /* ***** ARTISTS ***** */
+
 export const useGetArtists = () => {
   return useInfiniteQuery({
     queryKey: ['artists'],
@@ -222,7 +223,7 @@ export const useGetArtists = () => {
 
 export const useGetArtistsByGenre = (genreSlug) => {
   return useInfiniteQuery({
-    queryKey: ['artists'],
+    queryKey: ['artists', genreSlug],
     queryFn: ({ pageParam = 1 }) => getArtistsByGenre(pageParam, genreSlug),
     getNextPageParam: (lastPage) => {
       const { totalPages, currentPage } = lastPage;
@@ -234,14 +235,14 @@ export const useGetArtistsByGenre = (genreSlug) => {
 
 export const useGetMostRecentArtists = () => {
   return useQuery({
-    queryKey: ['artists'],
+    queryKey: ['most-recent-artists'],
     queryFn: () => getMostRecentArtists(),
   });
 };
 
 export const useGetArtist = (artistSlug) => {
   return useQuery({
-    queryKey: ['artists'],
+    queryKey: ['artists', artistSlug],
     queryFn: () => getArtist(artistSlug),
     enabled: !!artistSlug,
   });
@@ -321,7 +322,7 @@ export const useGetAlbums = () => {
 
 export const useGetAlbumsByArtist = (artistSlug) => {
   return useQuery({
-    queryKey: ['albums'],
+    queryKey: ['albums', artistSlug],
     queryFn: () => getAlbumsByArtist(artistSlug),
     enabled: !!artistSlug,
   });
@@ -329,14 +330,14 @@ export const useGetAlbumsByArtist = (artistSlug) => {
 
 export const useGetMostRecentAlbums = () => {
   return useQuery({
-    queryKey: ['albums'],
+    queryKey: ['most-recent-albums'],
     queryFn: () => getMostRecentAlbums(),
   });
 };
 
 export const useGetAlbumsByGenre = (genreSlug) => {
   return useInfiniteQuery({
-    queryKey: ['albums-by-genre'],
+    queryKey: ['albums', genreSlug],
     queryFn: ({ pageParam = 1 }) => getAlbumsByGenre(pageParam, genreSlug),
     getNextPageParam: (lastPage) => {
       const { totalPages, currentPage } = lastPage;

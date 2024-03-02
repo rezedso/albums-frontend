@@ -70,8 +70,6 @@ const ProfilePage = () => {
 
   const totalEntries = genreOverview?.reduce((a, c) => a + c.albumCount, 0);
 
-  console.log(currentUser?.id);
-  console.log(user?.id);
   return (
     <Container maxWidth='xl' sx={{ pb: 2 }}>
       {isLoadingReviews ||

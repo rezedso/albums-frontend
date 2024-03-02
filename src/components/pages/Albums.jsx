@@ -12,6 +12,9 @@ const AlbumsPage = () => {
     fetchNextPage,
     hasNextPage,
   } = useGetAlbums();
+
+  console.log(albums);
+  console.log(isLoadingAlbums);
   return (
     <Container maxWidth='xl' sx={{ pb: 2 }}>
       {isLoadingAlbums ? (
@@ -32,6 +35,7 @@ const AlbumsPage = () => {
               Go Back
             </Button>
           </Stack>
+
           <Stack spacing={2}>
             <InfiniteScrollAlbums
               data={albums}
