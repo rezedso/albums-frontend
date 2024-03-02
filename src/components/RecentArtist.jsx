@@ -36,7 +36,7 @@ const RecentArtist = ({ artist }) => {
           {artist.artistGenres.map((genre) => (
             <Typography
               key={genre.id}
-              to={`/genres/albums/${genre.slug}`}
+              to={`/genres/artists/${genre.slug}`}
               component={RouterLink}
               sx={{ color: 'text.primary' }}
               variant='subtitle2'
