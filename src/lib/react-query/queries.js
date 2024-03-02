@@ -222,7 +222,7 @@ export const useGetArtists = () => {
 
 export const useGetArtistsByGenre = (genreSlug) => {
   return useInfiniteQuery({
-    queryKey: ['artists-by-genre'],
+    queryKey: ['artists'],
     queryFn: ({ pageParam = 1 }) => getArtistsByGenre(pageParam, genreSlug),
     getNextPageParam: (lastPage) => {
       const { totalPages, currentPage } = lastPage;
@@ -234,14 +234,14 @@ export const useGetArtistsByGenre = (genreSlug) => {
 
 export const useGetMostRecentArtists = () => {
   return useQuery({
-    queryKey: ['recent-artists'],
+    queryKey: ['artists'],
     queryFn: () => getMostRecentArtists(),
   });
 };
 
 export const useGetArtist = (artistSlug) => {
   return useQuery({
-    queryKey: ['artists', artistSlug],
+    queryKey: ['artists'],
     queryFn: () => getArtist(artistSlug),
     enabled: !!artistSlug,
   });
@@ -254,7 +254,7 @@ export const useCreateArtist = () => {
     mutationFn: (formData) => createArtist(formData),
     onSuccess: () => {
       toast.success('Artist created.');
-      queryClient.invalidateQueries(['artists', 'recent-artists']);
+      queryClient.invalidateQueries(['artists']);
     },
     onError: (error) => {
       console.log(error);
@@ -294,7 +294,7 @@ export const useDeleteArtist = () => {
   return useMutation({
     mutationFn: (artistId) => deleteArtist(artistId),
     onSuccess: () => {
-      queryClient.invalidateQueries(['artists']);
+      queryClient.invalidateQueries(['artists', 'albums']);
       toast.success('Artist deleted.');
     },
     onError: (error) => {
@@ -321,7 +321,7 @@ export const useGetAlbums = () => {
 
 export const useGetAlbumsByArtist = (artistSlug) => {
   return useQuery({
-    queryKey: ['albums', artistSlug],
+    queryKey: ['albums'],
     queryFn: () => getAlbumsByArtist(artistSlug),
     enabled: !!artistSlug,
   });
@@ -329,7 +329,7 @@ export const useGetAlbumsByArtist = (artistSlug) => {
 
 export const useGetMostRecentAlbums = () => {
   return useQuery({
-    queryKey: ['recent-albums'],
+    queryKey: ['albums'],
     queryFn: () => getMostRecentAlbums(),
   });
 };
@@ -353,7 +353,7 @@ export const useCreateAlbum = () => {
     mutationFn: (formData) => createAlbum(formData),
     onSuccess: () => {
       toast.success('Album created.');
-      queryClient.invalidateQueries(['albums', 'recent-albums', 'reviews']);
+      queryClient.invalidateQueries(['albums', 'reviews']);
     },
     onError: (error) => {
       console.log(error);
