@@ -117,7 +117,7 @@ const UsersDataGrid = () => {
                   addRole: false,
                 });
                 toast.success(
-                  `Removed role ${e.target.value} to user "${params.row.username}"`
+                  `Removed role "${e.target.value}" to user "${params.row.username}"`
                 );
                 refetch();
               }}

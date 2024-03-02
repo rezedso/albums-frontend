@@ -274,7 +274,7 @@ export const useUpdateArtist = () => {
   return useMutation({
     mutationFn: (formData) => updateArtist(formData),
     onSuccess: (res) => {
-      queryClient.invalidateQueries(['artists']);
+      queryClient.invalidateQueries(['artists', 'albums']);
       navigate(`/artists/${res.slug}`);
     },
     onError: (error) => {

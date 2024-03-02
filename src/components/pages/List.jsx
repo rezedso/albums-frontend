@@ -22,6 +22,8 @@ const ListPage = () => {
     navigate(-1);
   };
 
+  console.log(currentUser?.id);
+  console.log(list?.userId);
   return (
     <Container maxWidth='xl'>
       <Stack direction='column' spacing={2} sx={{ mb: 2 }}>
